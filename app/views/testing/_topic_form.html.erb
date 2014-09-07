@@ -1,0 +1,9 @@
+ <div id="ntopic_form">
+ <label>  
+    <select name="top[id]" id="top_id" class="form-control" >  	
+      <% @topic.each do |t| %>
+        <option value=<%= t.id_topic %> > <%= t.name %></option>
+      <% end %>
+    </select>
+ </label>
+</div> 

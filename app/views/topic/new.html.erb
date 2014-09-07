@@ -1,0 +1,20 @@
+<%= form_for :topic, :url => { :action => :create }  do |f| %>
+  <div class="field">
+    <%= f.label :name,  'Наименование полное ' %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :short, 'Наименование краткое' %><br/>
+    <%= f.text_field :short %>
+  </div>
+  <div class="field">
+    <%= f.label :countmonth, 'Количество месяцев до нового экзамена' %><br/>
+    <%= f.text_field :countmonth %>
+  </div>
+  <br/>
+  <br/>
+  <br/>
+  <div class="actions">
+    <%= f.submit 'Сохранить'%>
+  </div>
+<% end %>

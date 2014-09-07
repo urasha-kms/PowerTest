@@ -1,0 +1,26 @@
+<style>
+
+</style>
+ <!--<div id="frm-edit" class="textarea">-->
+<br>
+<div id="frm-sign" style = "margin-left:380px">
+  <div class="panel panel-info" style="width:300px;" >
+    <div class="panel-heading">
+      <h3 class="panel-title">Авторизация</h3>
+    </div>
+    <%= form_for(:session, :url => sessions_path) do |f| %>
+      <div class="panel-body">
+        <label for="name">Имя</label>
+        <input type="text" class="form-control" placeholder="Text input" <%= f.text_field :name %>
+        <br/>
+        <label for="password">Пароль</label>
+        <input type="password" class="form-control" placeholder="Text input" <%= f.text_field :password %>
+      </div>
+      <div class="panel-footer ">
+        <button type="submit" class="btn btn-mid btn-primary"> Вход </button> 
+        <%= button_tag "Отменить", :class => "btn btn-mid btn-danger", :type => 'submit' %>
+<!--        <button type="cancel" class="btn btn-mid btn-danger" style="width:90px; margin-left:85px"> Отменить </button>-->
+      </div>
+    <% end %>
+  </div>
+</div>

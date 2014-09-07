@@ -1,0 +1,56 @@
+<style>
+  thead { display:block; background: #c0c0c0; margin:0px; cell-spacing:0px; left:0px; width:645px;}
+  tbody { display:block; overflow:auto; height:450px; width:643px;}
+  th { height:34px; overflow: hidden; }
+  td { height:40px; overflow: hidden; background:blue; margin:0px; cell-spacing:0px;}
+  table { table-layout: fixed; }
+  table th, table td { overflow: hidden; }
+  .tab-content {margin-top:5px; width:645px; height:480px;}
+</style>
+  <div class="tab-content" id="ntab-users">
+    <div class="tab-pane active" id="tab1">
+      <%= render 'edit_user' %>    
+      <div id="control_user" class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          Редактировать <span class="caret"></span>
+        </button>
+        <ul id="btn-list" class="dropdown-menu" role="menu">
+          <% @users.each do |t| %>
+            <li value=<%= t.id_user.to_s %> id="el_user"><a href="#" ><%= t.name %></a></li>      
+          <% end %>
+        </ul>
+      </div>
+
+<!--      <div id="tbl_scroll" class="textarea pre-scrollable">-->
+      <table class="table table-bordered table-hover table-responsive">
+        <thead>
+          <tr >
+            <th style="width: 5.1%">ID</th>
+            <th style="width: 10%">Имя</th>
+            <th style="width: 30.2%">Эл. адрес</th>
+            <th style="width: 4.5%">Админ</th>
+            <th style="width: 13.5%">Дата начала</th>
+            <th style="width: 16%">Дата окончания</th>
+          </tr>
+        </thead>  
+        <tbody>
+        <% @users.each do |t| %>
+          <tr class="success">
+            <td style="width:40px"><%= t.id_user %></td>
+            <td style="width:80px"><%= t.name %></td>
+            <td style="width:240px"><%= t.email %></td>
+            <td style="width:60px">
+            <% if t.admin == 1 %>   
+              <input type="checkbox" disabled checked = "checked" id="checkbox" >
+            <% else %> 
+              <input type="checkbox" disabled id="checkbox" >
+            <% end %> 
+            </td>
+            <td style="width:108px"> <%= t.date_start %></td>
+            <td style="width:112px"> <%= t.date_stop %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+<!--    </div>-->
+  </div>

@@ -1,0 +1,12 @@
+$('#nquest_form').html('<%= escape_javascript(render('quest_form')) %>')
+$('#nresult_form').html('<%= escape_javascript(render('result_form')) %>');
+if (<%= @res_answ %> == 0) 
+  SetAnswBtnEnable(true)
+else
+  SetAnswBtnEnable(false)	
+if (<%= @answ_all %>) {
+  SetAnswBtnEnable(false)	
+  clearTimeout(timeoutID); 
+  $('#nresult_form').slideDown("slow");
+}
+$(GetNameBtn(curr_qst)).addClass('btn-mygroup');

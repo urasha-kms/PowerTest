@@ -1,0 +1,407 @@
+body {
+  margin-top: 20px;
+  margin-left: 10px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 120%;
+  background: #c0c0c0; 
+}
+
+header {
+  padding-top: 20px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 120%;
+  margin-top: -20px;
+  margin-left: 20px;
+}
+
+.nav {
+  font-size: 120%;  
+}
+
+.container_testing {
+  width: 990px;
+  height: auto;
+  margin-top: -15px;
+  margin-left: -16px;
+/*  margin: 0px;*/
+/*  border-style: double; */
+  background: #b8e0e7;
+  border-radius: 0.3em;
+}
+
+/*  timer*/
+.mytimer {
+  position: absolute;  
+  margin-top: -40px; 
+  margin-left: 845px; 
+  height: 35px;
+  width: 125px;
+  font: 26px 'Open Sans Condensed', sans-serif;
+/*  
+  text-align: center;
+  letter-spacing: -3px;
+*/  
+  background-color: #e8e8e8;
+  border-radius: 0.3em;
+}
+
+.box-dec-min, .box-min, .box-dec-sec, .box-sec {
+  position: absolute;
+  display: block;
+  width: 1em;
+  background-color: #5cb85c;
+  border-radius: 0.2em;
+  text-align: center;
+  color: #fff;
+  letter-spacing:-1px;
+}
+
+.box-dec-min {
+  margin-left: 2px;
+  margin-top: 2px;
+}  
+.box-min {
+  margin-left: 30px;
+  margin-top: 2px;
+}
+
+.div-min {
+  position: absolute;
+  margin-left: 56px;
+  margin-top: 2px;
+  display: block;
+  width: 12px;
+  text-align: center;
+  color: black;
+  letter-spacing:-1px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+/*  background-color: red; */
+}
+
+.box-dec-sec {
+  margin-left: 69px;
+  margin-top: 2px;
+}
+
+.box-sec {
+  margin-left: 97px;
+  margin-top: 2px;
+}
+
+#top_id, #cat_id, #tic_id { 
+  width: auto;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 115%;
+  background: #f0f0f0;
+}
+
+#lbl { 
+  font-size: 115%;
+  margin-top: 8%;
+  width: 60px;
+  text-align: right;
+/*  font-weight: bold;*/
+  margin-right: 5px;
+}
+
+#nquest_form {
+  width: auto;
+}
+
+#lbl_quest {
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 12px;
+  font-size: 120%;
+  width: auto;
+}
+
+#lbl_numquest {
+  font-size: 120%;
+  margin-left: 10px;
+  width: auto;
+}
+
+.btn-group {
+  margin-left: 10px;
+}
+
+.btn-group > button.btn {
+  margin-right: 1px; 
+}
+
+.btn-mygroup {
+  border-color: #5cb85c;
+  border-width: 3px;
+  margin-top: -2px; 
+}
+
+#btn_quest {
+  width: 48px;
+}
+
+.btn-toolbar {
+  position: absolute;
+  margin-left: 286px;
+  margin-top: -33px;
+  width: auto;
+  font-weight: bold;
+  height: 19px;
+}
+
+#lbl_info {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 120%;
+  margin-left: 10px;
+}
+
+#answer-button {
+  font-size: 140%;
+  margin-left: 20px;
+  margin-top: -23px;
+  width: auto;
+}
+
+#lbl_answer {
+  font-size: 120%;
+  margin-top: -2%;
+}
+
+#quest-text, #answer-text {
+  margin-top: -20px;
+  width: 93%;  
+  font-family: "Times New Roman", Times, serif;
+  font-size: 140%;
+  font-weight: normal;
+  margin-left: 50px;
+}
+
+#answer-text {
+  margin-left: 35px;
+/*  margin-top: -20px;*/
+}
+
+.checkbox {
+  height: 120%;
+  margin-left: 10px;
+}
+
+#lbl_result {
+  margin-left: 10px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 120%;
+}
+
+#res_answer_good, 
+#res_answer_bad, 
+#res_answer_none {
+  position: absolute;  
+  margin-top: -21px;
+  margin-left: 98px;
+  text-indent: 10px;
+  border-style: solid; 
+  border-width: 1px; 
+  width: 874px; 
+  height: 25px; 
+  border-color: #5bc0de;
+  color: #428bca;
+  font-size: 140%;
+  line-height: 140%;
+  background: #f0f0f0;
+  border-radius: 0.3em;
+}
+
+#res_answer_bad { 
+  color: #d9534f;
+}
+
+/*#nresult_form, */
+#msg_good,
+#msg_middle,
+#msg_bad,
+#msg_hz {
+  position: absolute;  
+  margin-top: 13px; 
+  margin-left: 106px;
+  font-size: 140%;
+  height: auto;
+  width: 864px;
+  text-align: center;
+  border-radius: 0.3em;
+}
+
+.modal {
+  position: absolute;  
+  margin-top: 80px; 
+  color: white;
+  background: #0088cc;
+  border: 1px solid #006699;
+}
+
+.close {
+  color: white;
+}
+
+.modal-header {
+  color: white; 
+  background: #0088cc;
+  border-top: 1px solid #006699;
+  border-left: 1px solid #006699;
+  border-right: 1px solid #006699;
+}
+
+#setup .modal-body {
+  color: black; 
+  height: 60px;
+  border-bottom: 2px solid #006699;
+  border-bottom-color: #0088cc; 
+  background: #c0c0c0;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 140%;
+}
+
+#about_prog .modal-body {
+  color: black;
+  height: 60px; 
+/*  border-bottom: 2px solid #006699;
+  border-bottom-color: #0088cc; */
+  background: #c0c0c0;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 140%;
+}
+
+#timetest {
+  width: 30px;
+}
+
+#btn-save {
+  margin-left: 70%;
+}
+
+#btn-close {
+  margin-left: 85%;
+}
+
+#setup_content, #about_content {
+  background: #c0c0c0;
+}
+
+#about_prog .modal-footer {
+  background: #c0c0c0;
+  border-top: 2px solid #006699;
+  border-top-color: #0088cc; 
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+#control_user {
+  position: absolute;  
+  margin-top: 0px; 
+  margin-left: 654px;
+}
+
+#frm-edit {
+  position: absolute;  
+  margin-top: 20px; 
+  margin-left: 327px;
+  width: 300px;
+/*  background: #428bca;*/
+  border-radius: 1em;
+/*  display: none;*/
+}
+
+#element_form_edit {
+  margin-left: 10px;
+}
+
+#lbl_inf {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 120%;
+  margin-top: -20px; 
+  width: 150px; 
+}
+
+#user_admin {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 150%;
+  margin-top: -12px; 
+  margin-left: 10px; 
+}
+
+/*
+#about_prog .modal-body {
+  color: black; 
+  background: #c0c0c0;
+  border-top: 1px solid #006699;
+}
+
+#about_prog .modal-footer {
+  background: #c0c0c0;
+  border-top: 1px solid #006699;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+
+
+#setup .modal-footer {
+  background: #c0c0c0;
+  border-top: 1px solid #006699;
+  height: 0px; 
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+
+#myModal{
+  display: none;
+  }
+
+#myModal .tab-pane .row {
+     margin: 3px 0;
+     width: 100%;
+     float: none;
+     padding: 0;
+     float: none;
+     clear: both;
+     display: block;
+  }
+
+#myModal .tab-pane .row label {
+     display: block;
+     float: left;
+     cursor: pointer;
+     width: 200px;
+  }
+*/
+
+  /** Bootstrap Dark Modal Styles **/
+/*.modal-open .modal, .btn:focus {
+    outline: none !important;
+}
+ 
+.modal.dark { background-color: green; }
+.modal.dark .modal-body {
+  background: green;
+}
+ 
+.modal.dark .modal-header {
+  background: green;
+  border-bottom: 1px solid green;
+}
+.modal.dark .modal-header h1, .modal.dark .modal-header h2, .modal.dark .modal-header h3, .modal.dark .modal-header h4 {
+  color: #ccc;
+}
+ 
+.modal.dark .modal-footer {
+  background: #2d3032;
+  border-top: 1px solid #2a2c2e;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+*/

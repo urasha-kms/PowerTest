@@ -1,0 +1,8 @@
+<p>
+<strong>Name:</strong>
+<%= @topic.name %>
+</p>
+<p>
+<strong>Create_at:</strong>
+<%= @topic.create_at %>
+</p>

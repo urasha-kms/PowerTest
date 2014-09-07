@@ -1,0 +1,33 @@
+<h1>Редактирование темы <%= @topic.id.to_s %></h1>
+<%= form_for :topic, :url => { :action => :update, :id => @topic.id }, :method => :put do |f| %>
+  <% if @topic.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this post from being saved:</h2>
+    <ul>
+      <% @topic.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<p>
+<%= f.label :id %><br>
+<%= f.text_field :id %>
+</p>
+<p>
+<%= f.label :name, 'Наименование' %><br>
+<%= f.text_field :name %>
+</p>
+<p>
+<%= f.label :short, 'Наименование краткое' %><br>
+<%= f.text_field :short %>
+</p>
+<p>
+<%= f.label :countmonth %><br>
+<%= f.text_field :countmonth %>
+</p>
+<p>
+<%= f.submit 'Сохранить изменения' %>
+</p>
+<% end %>
+<%= link_to 'Назад', :action => :show %>

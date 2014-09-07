@@ -1,0 +1,44 @@
+<style>
+.panel-title {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 120%;}
+</style>
+ <!--<div id="frm-edit" class="textarea">-->
+<div id="frm-edit">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Редактирование</h3>
+    </div>
+    <%= form_for @user, url: {action: "index"}, html: {class: "nifty_form"} do |f| %>
+      <div class="panel-body">
+        <div><%= f.hidden_field :id_user %></div>
+        <label for="name">Имя</label>
+        <input type="text" class="form-control" placeholder="Text input" <%= f.text_field :name %>
+        <br/>
+        <label for="email">email</label>
+        <input type="text" class="form-control" placeholder="Text input" <%= f.text_field :email %>
+        <br/>
+        <label for="password">Пароль</label>
+        <input type="password" class="form-control" placeholder="Text input" <%= f.text_field :password %>
+        <br/>
+        <label for="password_confirmation">Подтверждение пароля</label>
+        <input type="password" class="form-control" placeholder="Text input" <%= f.text_field :password_confirmation %>
+        <br/>
+        <label for="user_admin">Администратор</label>
+        <%= f.check_box :admin %>
+        <br/>
+        <br/>
+        <label for="date_start">Дата начала действия</label>
+        <input type="date" class="form-control" id="date_start" placeholder="Text input" <%= text_field(:user, :date_start) %>
+        <br/>
+        <label for="date_stop">Дата окончания действия</label>
+        <input type="date" class="form-control" id="date_start" placeholder="Text input" <%= text_field(:user, :date_stop) %>
+      </div>
+      <div class="panel-footer ">
+        <button type="submit" class="btn btn-mid btn-primary" style="width:90px;"> Сохранить </button> 
+        <%= button_tag "Отменить", :class => "btn btn-mid btn-danger", :type => 'submit', :style=> "width:90px; margin-left:85px" %>
+<!--        <button type="cancel" class="btn btn-mid btn-danger" style="width:90px; margin-left:85px"> Отменить </button>-->
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,203 @@
+<script>
+  var stop_time = 0;
+  var delta;
+  var timeoutID;
+  var startbtn = 1;
+  var curr_qst = 1;
+  var url_name;
+
+  function GetNameBtn(num_btn) { 
+    return '.btn-group > button.btn' + '[value="' + String(num_btn) + '"]';
+  }; 
+
+  function SetAnswBtnEnable(state) { 
+    if (state)
+      $("#answer-button").prop("class", "btn btn-lg btn-primary")
+    else
+      $("#answer-button").prop("class", "btn btn-lg btn-primary disabled")
+  }; 
+
+ 
+  $(document).ready(function() {
+
+    $("#nquest_form").html("<%= escape_javascript(render('quest_form')) %>");
+    TimerInit(<%= @timetest %>);
+    
+    function TimerInit(limits) { 
+      $('#nresult_form').hide();
+      stop_time = (new Date()).getTime() + limits*60*1000;
+      $(GetNameBtn(startbtn)).addClass('btn-mygroup');
+      TimerTick();
+    }; 
+
+    function TimerTick() { 
+      curr_time = (new Date()).getTime();
+      delta = Math.floor((stop_time - curr_time)/1000);
+      if (delta < 0) {
+        delta = 0;
+      };   
+      dec_m = Math.floor(delta/60/10);
+      m = Math.floor(delta/60) - 10*dec_m;
+      dec_s = Math.floor((delta - 60*Math.floor(delta/60))/10);
+      s = delta - 600*dec_m - 60*m - 10*dec_s;
+      $(".box-dec-min").text(dec_m);
+      $(".box-min").text(m);
+      $(".box-dec-sec").text(dec_s);
+      $(".box-sec").text(s);
+      if (delta > 0) {
+        timeoutID = setTimeout(TimerTick, 1000); 
+      }
+      else {
+        SetAnswBtnEnable(false);
+        $('#nresult_form').slideDown("slow");
+      };
+    }; 
+
+    $('select').keydown(function(e){
+      if (e.keyCode == 37 || e.keyCode == 39) {
+        e.preventDefault();
+      }
+     });
+
+    $(window).keydown(function(e){
+      if ((e.which !== 37) && (e.which !== 39)) {
+        return; 
+      };
+      if (e.which == 37) {
+        next_qst = ( curr_qst > 1 ) ? curr_qst - 1 : curr_qst;
+      };
+      if (e.which == 39) {
+        next_qst = ( curr_qst < 20 ) ? curr_qst + 1 : curr_qst;
+      };
+      $(GetNameBtn(next_qst)).trigger('click');
+    });
+
+    $('.container_testing').on('click', '#checkbox', function () {
+      num_answ = $(this).prop("value"); 
+      val_answ = ($(this).prop("checked")) ? 1 : 0;
+      url_name = '/testing/change_answer.js';
+      data = { quest_id: curr_qst, 
+               answ_id:  num_answ,
+               answ_val: val_answ };
+      $.ajax({
+         url: url_name,
+         data: data,
+         success: function(data) {
+                                 }
+            });
+    });
+
+    $('.container_testing').on('click', '#answer-button', function () {
+      if ($("#answer-button").prop("class") == "btn btn-lg btn-primary disabled") {
+        return false
+      };
+      if (delta == 0) {
+        return false
+      };
+      url_name = '/testing/accept_answer.js';
+      data = { qst_id:  curr_qst, 
+               ntic_id: $("#tic_id").val() };
+      $.ajax({
+         url: url_name,
+         data: data,
+         success: function(data) {
+                                 }
+            });
+      SetAnswBtnEnable(false)
+    });
+
+    $('.container_testing').on('click', '.btn-group > button.btn', function () {
+      num_quest = +this.innerHTML;
+      if (isNaN(num_quest)) {
+         return;
+      };
+      url_name = '/testing/change_quest.js';
+      data = { qst_id: num_quest, 
+               ntic_id: $("#tic_id").val() };
+      $.ajax({
+         url: url_name,
+         data: data,
+         success: function(data) {
+                                 }
+            });
+    });
+
+    $('.container_testing').on('click', '#next', function () {
+      next_qst = ( curr_qst < 20 ) ? curr_qst + 1 : curr_qst;
+      $(GetNameBtn(next_qst)).trigger('click');
+    });
+
+    $('.container_testing').on('click', '#prev', function () {
+      prev_qst = ( curr_qst > 1 ) ? curr_qst - 1 : curr_qst;
+      $(GetNameBtn(prev_qst)).trigger('click');
+    });
+
+    $('.container_testing').on('change', 'select', function () {
+      name_element = $(this).attr("name");
+      url_name = '';
+      Id_category = 0;
+      curr_qst = 1;
+
+      if (($("#top_id").val() == 3) || ($("#top_id").val() == 5)) {
+        $("#gr").hide();
+        $(".lbl_grp").hide();
+          }
+      else {
+        $("#gr").show();
+        $(".lbl_grp").show();
+        Id_category = $("#cat_id").val(); 
+      }
+      switch (name_element) {
+        case 'top[id]': url_name = '/testing/change_topic.js';     break;
+        case 'cat[id]': url_name = '/testing/change_category.js';  break;
+        case 'tic[id]': url_name = '/testing/change_numticket.js'; break;
+      }
+      data = { topic_id: $("#top_id").val(), 
+               group_id: Id_category,
+               ntic_id:  $("#tic_id").val() };
+      $.ajax({
+         url: url_name,
+         data: data,
+         success: function(data) {
+                                 }
+            });
+      SetAnswBtnEnable(true)
+      TimerInit(<%= @timetest %>);
+//      alert(<%= @timetest + 10%>);
+    });
+  });
+</script>
+<!--
+<ul class="nav nav-pills">
+  <li class="active">
+    <a>Тестирование</a>
+  </li>
+  <li><%= link_to 'Главная', root_url %></li>
+</ul>
+<br/>-->
+
+<br/>
+<div class="panel panel-info" style = "width:990px; height:100px">
+  <div class="panel-heading">
+    <h3 class="panel-title">Тестирование</h3>
+  </div>
+  <div class="panel-body">
+    <div class = "container_testing">
+    <br/>
+    <table>
+      <tr>
+        <td> <p id = "lbl" >Тема</p> </td>
+        <td> <%= render 'topic_form' %> </td>
+        <td> <p id = "lbl"  class = "lbl_grp">Группа </p> </td>
+        <td> <%= render 'category_form' %> </td>
+        <td> <p id = "lbl" >Билет</p> </td>
+        <td> <%= render 'numticket_form' %> </td>
+      </tr>  
+    </table>  
+
+    <%= render 'timer_form' %>
+    <%= render 'result_form' %>
+    <%= render 'quest_form' %>
+  </div>  
+  </div>  
+</div>

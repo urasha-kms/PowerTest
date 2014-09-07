@@ -1,0 +1,11 @@
+$('#nquest_form').html("<%= escape_javascript(render('quest_form')) %>")
+if (<%= @res_answ %> == 0) { 
+  if (delta > 0) 
+    { SetAnswBtnEnable(true) }	
+  else 
+    { SetAnswBtnEnable(false) }	
+  }
+else 
+  { SetAnswBtnEnable(false)	}  
+curr_qst = <%= @quest_num %>;
+$(GetNameBtn(curr_qst)).addClass('btn-mygroup');

@@ -1,0 +1,55 @@
+<style>
+  .container {
+    margin-left: -36px;
+  }
+
+ span {color:red;  
+       font-family: "Times New Roman", Times, serif;
+       font-weight: bold;} 
+
+</style>
+<header>
+  <ul class="nav nav-pills">
+    <li class="active">
+      <a> Программа тестирования по ТБ</a>
+    </li>
+    <li><a href='/'>Домашняя</a> </li>
+    <% if signed_in? %>
+      <li><a href='/testing/show'>Тестирование</a></li>
+      <li><a href='#setup' role="button" data-toggle="modal" data-backdrop="false">Настройки</a> </li>
+    <% end %>
+    <% if user_admin? %> 
+      <li><a href='/admin/index' role="button" data-toggle="modal" data-backdrop="false">Админка</a></li>
+    <% end %>  
+    <li><a href='#about_prog' role="button" data-toggle="modal" data-backdrop="false">О программе</a></li>
+    <li><a href='/signin'>Авторизация</a> </li>
+    <% if signed_in? %>
+      <li><a href='/signout'>Выход</a> </li>
+    <% end %>  
+    <li class="active">
+      <% if signed_in? %>
+        <a>Пользователь: <span> <%= current_user.name %> </span> </a>
+      <% end %>
+    </li>
+
+  </ul>
+<!--
+  <nav class="round">
+    <ul>
+      <li><%#= link_to "Home", root_path %></li>
+        <%# if signed_in? %>
+          <li><%#= link_to "Users", "*" %></li>
+          <li><%#= link_to "Profile", "*" %></li>
+        <li><%#= link_to "Settings", "*" %></li>
+      <% #end %>
+      <li><%#= link_to "Help", "*" %></li>
+      <%# if signed_in? %>
+      <li><%#= link_to "Sign out", "*", :method => :delete %></li>
+      <%# else %>
+      <li><%#= link_to "Sign in", "*" %></li>
+      <%# end %>
+    </ul>
+  </nav>
+-->
+</header>
+

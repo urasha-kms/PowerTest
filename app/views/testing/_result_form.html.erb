@@ -1,0 +1,29 @@
+<div id = "nresult_form">
+  <% case @id_ocenka %>
+  <% when 1 %>
+    <div class="alert alert-info alert-dismissable" id='msg_good'>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      Тест окончен. Ваша оценка <strong>отлично!</strong> <%= @percent_good_answ %> % положительных ответов
+    </div>
+  <% when 2 %>
+    <div class="alert alert-success alert-dismissable" id='msg_middle'>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      Тест окончен. Ваша оценка <strong>хорошо!</strong> <%= @percent_good_answ %> % положительных ответов
+    </div>
+  <% when 3 %>
+    <div class="alert alert-success alert-dismissable" id='msg_middle'>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      Тест окончен. Ваша оценка <strong>удовлетворительно!</strong> <%= @percent_good_answ %> % положительных ответов
+    </div>
+  <% when 4 %>
+    <div class="alert alert-danger alert-dismissable" id="msg_bad">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      Тест окончен. Ваша оценка <strong>неудовлетворительно!</strong> <%= @percent_good_answ %> % положительных ответов
+    </div>
+  <% else %>
+    <div class="alert alert-danger alert-dismissable" id='msg_hz'>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      Тест окончен. Ваша оценка <strong>неизвестна!</strong>
+    </div>
+  <% end %>
+</div>  

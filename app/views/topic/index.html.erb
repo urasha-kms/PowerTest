@@ -1,0 +1,34 @@
+<h2> Справочник тем</h2>
+
+<%= link_to 'Новая тема', 'new' %>
+<br>
+<%= link_to 'Главная', root_url  %>
+<br/>
+<br/>
+<br/>
+
+<table border="1">
+  <tr>
+    <th>Id</th>
+    <th>Наименование</th>
+    <th>Краткое наименование</th>
+    <th>Кол-во месяцев</th>
+    <th>Время создания</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @topic.each do |t| %>
+  <tr>
+    <td><%= t.id %>
+    <td><%= t.name %></td>
+    <td><%= t.short %></td>
+    <td><%= t.countmonth %></td>
+    <td><%= t.created_at.localtime %></td>
+    <td><%= link_to 'Изменить', :action => :edit, :id => t.id %></td>
+    <td><%= link_to 'Удалить', { :action => :destroy, :id => t.id }, :method => :delete, :confirm => 'Удалить запись с Id = ' + t.id.to_s + ' ?' %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

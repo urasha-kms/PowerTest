@@ -1,0 +1,109 @@
+<div id="nquest_form">
+  <br>
+  <br>
+  <span id = "lbl_quest" class="label label-success">Вопросы</span> 
+  <br/>
+  <br/>
+  <br/>
+  <div id= "btn-qst" class="btn-group" data-toggle="buttons-radio"> 
+    <% i = 0 %>
+    <% @answ_result.each do |t| %>
+      <% case %>
+        <% when @answ_result[i] == 1 %> 
+          <button id = "btn_quest" type="button" class="btn btn-primary" value = <%= i + 1 %> > <%= (i + 1).to_s %> </button>
+        <% when @answ_result[i] == 0 %>   
+          <button id = "btn_quest" type="button" class="btn btn-default" value = <%= i + 1 %> > <%= (i + 1).to_s %> </button>
+        <% when @answ_result[i] == -1 %>   
+          <button id = "btn_quest"  type="button" class="btn btn-danger" value = <%= i + 1 %> > <%= (i + 1).to_s %> </button>
+      <% end %>  
+      <% i += 1 %>
+    <% end %>
+  </div>
+  <p></p>
+  
+  <br>
+  <label id = "qst">
+  	<span id = "lbl_numquest" class="label label-success" value = <%= @quest_num %> > <%= @quest_num %> </span>
+    <p id="quest-text"> <%= @quest.text.strip %> </p>
+  </label >
+  <br/>
+  <br>
+  <br>
+
+  <span id = "lbl_info" class="label label-info">Ответы</span>
+  <button id = "answer-button" type="button" class="btn btn-lg btn-primary"> Принять ответ </button>
+  <div class="btn-toolbar">
+    <div class="btn-group" id="pager_prev">
+      <button class="btn btn-default" id = "prev"> &larr; Пред. вопрос </button>
+    </div>
+    <div class="btn-group" id="pager_next">
+      <button class="btn btn-default" id = "next" > След. вопрос &rarr; </button>
+    </div>
+  </div>
+  <br/>
+  <br/>
+  <% i = 0 %>
+  <% @answ.each do |t| %>
+    <label class="checkbox">
+      <span id = "lbl_answer" class="label label-info"><%= i + 1 %></span>
+            <% if @curr_answer[i] == 1 %>
+        <% if @res_answ == 0 %>
+          <input type="checkbox" checked = "checked" id="checkbox" value = <%= i %> > 
+        <% else %>  
+          <input type="checkbox" checked = "checked" id="checkbox" value = <%= i %> disabled > 
+        <% end %>    
+      <% else %>  
+        <% if @res_answ == 0 %>
+          <input type="checkbox" id = "checkbox" value = <%= i %> > 
+        <% else %>
+          <input type="checkbox" id = "checkbox" value = <%= i %> disabled > 
+        <% end %>      
+      <% end %>  
+      <% if Rails.env.production? %>
+        <p id="answer-text"> <%= t.text.strip %> </p>
+      <% else%>
+        <p id="answer-text"> <%= t.text.strip + ' ' + t.good.to_s %> </p>
+      <% end %>      
+    </label>
+    <% i += 1 %> 
+  <% end %>
+
+  <p> </p>
+  <p> </p>
+  <br/>
+  <span id = "lbl_result" class="label label-info">Результат</span>
+  <br/>
+  <% case %>
+    <% when @res_answ == 1 %> 
+      <p id = "res_answer_good"> Правильный ответ</p>
+    <% when @res_answ == -1 %> 
+      <p id = "res_answer_bad">  Неправильный ответ. Правильно: <%= @solution_answ %> </p>
+    <% when @res_answ == 0 %> 
+      <p id = "res_answer_none"> </p>
+  <% end %>
+  <br/>
+
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+  <li><a tabindex="1" href="#">Действие</a></li>
+  <li><a tabindex="2" href="#">Другое действие</a></li>
+  <li><a tabindex="3" href="#">Еще ссылка</a></li>
+  <li class="divider"></li>
+  <li><a tabindex="4" href="#">Доп. ссылка</a></li>
+</ul>  
+<%#= ENV["RAILS_ENV"] %>
+<%#= session[:answ_user] %>
+<!--  <br/> -->
+<%#= session[:answ_result] %>
+<!--  <br/> -->
+<%#= $answ_good %>
+<!--  <br/> -->
+<%#= @answ_result %>
+
+<!--  <br/> -->
+<!--  <%#= $id_ocenka %> --> 
+<!--  <%#= $disabled_answer %>  -->
+<!--  <%#= $answ_result %>  -->
+<!--  <%#= $answ_all %> -->
+  <%#= $answ_good %>  
+  <%#= $percent_good_answ %>  
+</div> 

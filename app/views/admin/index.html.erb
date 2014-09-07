@@ -1,0 +1,54 @@
+<script>
+$(document).ready(function() {
+  $('.dropdown-toggle').dropdown();
+  $('#frm-edit').hide();
+
+  $('.panel-body').on('click', '.dropdown-menu li a', function () {
+    url_name = '/admin/select_user.js'
+    data = { user_name: $(this).prop("text") };
+    $.ajax({ url: url_name,
+             data: data,
+             success: function(data) {
+                                     }
+          });
+  });
+  
+});
+
+</script>
+<!--
+<ul class="nav nav-pills">
+  <li class="active">
+    <a>Админка</a>
+  </li>
+  <li><%#= link_to 'Главная', root_url %></li>
+</ul>
+-->
+<br/>
+<div class="panel panel-info" style="width:980px; height:100px">
+  <div class="panel-heading">
+    <h3 class="panel-title">Редактирование</h3>
+  </div>
+  <div class="tabbable">
+    <ul class="nav nav-tabs"  style= "background: #b8e0e7">
+      <li class="active"><a href="#tab1" data-toggle="tab">Пользователи</a></li>
+      <li><a href="#tab2" data-toggle="tab">Настройки</a></li>
+    </ul>
+    <div class="panel-body" style= "background: #b8e0e7">
+      <%= render 'show_users' %>    
+        <div class="tab-pane" id="tab2">
+        <p>Привет, я 2-я секция.</p>
+        <% if @userog.date_start.nil? %>
+          <%= @userog.date_start %>
+        <% else %>
+          <%= @userog.date_start.strftime("%d.%m.%Y") %>
+        <% end %>
+        <% if @userog.date_stop.nil? %>
+          <%= date_field_tag(:userog, nil, value: @userog.date_stop) %>
+        <% else %>
+          <%= date_field_tag(:userog, nil, value: @userog.date_stop.strftime("%d.%m.%Y")) %>
+        <% end %>
+      </div>
+    </div> 
+  </div>
+</div>

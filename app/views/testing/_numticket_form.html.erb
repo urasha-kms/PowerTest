@@ -1,0 +1,9 @@
+<div id="nticket_form">
+  <label>
+    <select name="tic[id]" id="tic_id" class="form-control" >  	
+      <% @numticket.each do |t| %>
+        <option value=<%= t.id_numticket %> > <%= t.nticket %> </option>
+      <% end %>
+    </select>
+  </label>
+</div>

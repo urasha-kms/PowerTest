@@ -1,0 +1,9 @@
+<div id="ncategory_form">
+  <label id = "gr">
+    <select name="cat[id]" id="cat_id" class="form-control" >  	
+      <% @category.each do |t| %>
+        <option value=<%= t.id_category %> > <%= t.name %></option>
+      <% end %>
+    </select>
+  </label>
+</div>

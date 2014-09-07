@@ -1,0 +1,6 @@
+if ($('#cat_id').is(':visible')) 
+  {$ ('#ncategory_form').html("<%= escape_javascript(render('category_form')) %>") }
+$('#nticket_form').html("<%= escape_javascript(render('numticket_form')) %>")
+$('#nquest_form').html("<%= escape_javascript(render('quest_form')) %>")
+$('#quest-button').button('toggle');
+$(GetNameBtn(startbtn)).addClass('btn-mygroup');

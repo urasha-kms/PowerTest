@@ -1,0 +1,48 @@
+<script>
+  $(document).ready(function(){
+
+    $('#setup').on('shown.bs.modal', function () {
+      $('#timetest').focus().select();
+    });
+
+  });
+</script>
+
+<!--   О программе -->
+<div class="modal fade" id="about_prog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div id='about_content' class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 id="myModalLabel">О программе</h4>
+      </div>
+      <div class="modal-body">
+        <p id="body_modal">Программа тестирования по технике безопасности.</p>
+      </div>
+      <div class="modal-footer">
+        <button id='btn-close' class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Закрыть</button> 
+      </div>    
+    </div>
+  </div>  
+</div>
+
+<!--   Настройки -->
+<div class="modal fade" id="setup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div id='setup_content' class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Настройки</h4>
+      </div>
+      <%= form_tag({controller: "main", action: "setup"}, method: "get", class: "nifty_form") do %>
+        <div class="modal-body">
+          Время тестирования (мин) <%= text_field_tag :timetest, get_timetest, :maxlength => 2 %>
+        </div>  
+          <br/>
+          <button id = 'btn-save' type="submit" class="btn save btn-primary"> Сохранить </button> 
+          <button class="btn cancel btn-danger" data-dismiss="modal" aria-hidden="true">Закрыть</button> 
+      <% end %>
+      <br/>
+    </div>
+  </div>
+</div>  
